@@ -2,6 +2,7 @@ import express from 'express';
 import  mongoose from 'mongoose';
 import dotenv from 'dotenv';
 const app = express();
+import cors from 'cors';
 import authRoute from './routes/auth.js';
 import historyCard from './routes/historyCard.js';
 import recordRoute from './routes/records.js'
@@ -10,6 +11,9 @@ import usersRoute from './routes/user.js';
 dotenv.config();
 
 app.use(express.json());
+app.use(cors({
+  origin: true,
+}))
 
 const connect = async () =>{
     try {
@@ -33,7 +37,7 @@ mongoose.connection.on("disconnected",()=>{
 
 app.use('/api/auth',authRoute);
 app.use('/api/record',recordRoute);
-app.use('api/users',usersRoute);
+app.use('/api/users',usersRoute);
 
 app.use((err,req,res,next)=>{
     const errorStatus = err.status || 400;
