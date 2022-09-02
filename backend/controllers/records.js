@@ -34,6 +34,15 @@ export const deleterecord = async (req,res,next)=>{
         res.status(500).json(err);
     }
 }
+export const getuserRecords = async (req,res,next)=>{
+    try{
+        const getRecords = await historyCard.find({patientId:req.params.userid});
+        console.log(getRecords);
+        res.status(200).json(getRecords);
+    }catch(err){
+        next(err);
+    }
+}
 export const getrecord = async (req,res,next)=>{
     try{
         const getRecord = await historyCard.findById(req.params.id);

@@ -8,11 +8,11 @@ export const medicalHistory = async(req,res,next) =>{
             "checkdate":req.body.checkdate,
             "weight":req.body.weight,
             "height":req.body.height,
-            "desc":req,
-            "prescription":req.body.prescription
+            "desc":req.body.desc,
+            // "prescription":req.body.myImage
         })
 
-        // await newRecord.save();
+        await newRecord.save();
         res.status(200).send(newRecord);
 
     }catch(err){

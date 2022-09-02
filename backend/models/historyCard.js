@@ -5,10 +5,6 @@ const historyCardSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    checkdate:{
-        type:String,
-        required:true
-    },
     weight:{
         type:Number,
         required:true
@@ -25,8 +21,15 @@ const historyCardSchema = new mongoose.Schema({
         type:String,
         requried:true
     },
+    checkdate:{
+        type:Date,
+        required:true
+    },
+    patientId:{
+        type:String
+    },
     prescription:{
-        type:[String]
+        type:String
     }
 
 },{timestamps:true})
