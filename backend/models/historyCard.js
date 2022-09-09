@@ -29,7 +29,8 @@ const historyCardSchema = new mongoose.Schema({
         type:String
     },
     prescription:{
-        type:String
+        type:String,
+        default: ""
     }
 
 },{timestamps:true})
