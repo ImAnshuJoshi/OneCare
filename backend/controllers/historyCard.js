@@ -9,19 +9,21 @@ export const medicalHistory = async(req,res,next) =>{
         //     "height":req.body.height,
         //     "desc":req.body.desc,
         // })
-        const recordData = JSON.parse(req.body.recordData);
+        const recordData = JSON.parse(req.body);
+        recordData["prescription"] = req.file.path
+        console.log(recordData);
 
         // save only path to the file, since it's in the public folder
-        recordData.prescription = req.file.path;
+        // recordData.prescription = req.file.path;
         
-        console.log('recordData', recordData);
+        // // console.log('recordData', recordData);
 
         // save..
         const newRecord = new historyCard(recordData);
 
-        console.log(newRecord);
-        await newRecord.save();
-        res.status(200).send(newRecord);
+        // console.log(newRecord);
+        // await newRecord.save();
+        // res.status(200).send(newRecord);
 
     }catch(err){
         next(err);

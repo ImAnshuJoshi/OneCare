@@ -10,23 +10,35 @@ import {
 import dotenv from "dotenv";
 import ImageKit from "imagekit";
 import fs from "fs";
+import multer from 'multer';
+const Storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      Date.now()+file.originalname
+    );
+  },
+});
+
+const upload=multer({
+  storage:Storage,
+  limits:{
+      fieldSize:1024*1024*3
+  }
+})
+
 
 const router = express.Router();
 dotenv.config()
 
-router.post("/createrecord", createrecord);
+router.post("/", upload.single('image'),createrecord);
 router.put("/updaterecord/:id", updaterecord);
 router.delete("/deleterecord/:id", deleterecord);
 router.get("/getrecord/:id", getrecord);
 router.get("/getrecords/:userid", getuserRecords);
 router.get("/getrecords", getrecords);
-router.get("/auth", (req, res) => {
- 
-    var imagekit = new ImageKit({
-        publicKey : process.env.IMAGEKIT_PUBLIC_KEY  ,
-        privateKey :  process.env.IMAGEKIT_PRIVATE_KEY ,
-        urlEndpoint : process.env.IMAGEKIT_URL
-    });
-});
 
 export default router;

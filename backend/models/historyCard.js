@@ -23,7 +23,7 @@ const historyCardSchema = new mongoose.Schema({
     },
     checkdate:{
         type:Date,
-        required:true
+        // required:true
     },
     patientId:{
         type:String

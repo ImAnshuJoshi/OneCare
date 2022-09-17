@@ -50,7 +50,7 @@ mongoose.connection.on("connected",()=>{
 })
 
 mongoose.connection.on("disconnected",()=>{
-  console.log('MongoDB connected');
+  console.log('MongoDB disconnected');
 })
 
 app.use('/api/auth',authRoute);
