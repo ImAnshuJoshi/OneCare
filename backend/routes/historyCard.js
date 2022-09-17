@@ -3,21 +3,9 @@ import { medicalHistory } from "../controllers/historyCard.js";
 // import historyCard from "../models/historyCard";
 import multer from 'multer';
 
-// const storage = multer.diskStorage({
-
-//     //destination for the files
-//     destination:function(request,response,callback){
-//         callback(null,'./public/uploads/images');
-//     },
-
-//     //filenae
-//     filename:function(request,response,callback){
-//         callback(null,Date.now()+file.originalname)
-//     }
-// });
-const storage = multer.diskStorage({
+const Storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "./public/images");
+      cb(null, "./public");
     },
     filename: (req, file, cb) => {
       cb(
@@ -28,7 +16,7 @@ const storage = multer.diskStorage({
   });
 
 const upload=multer({
-    storage:storage,
+    storage:Storage,
     limits:{
         fieldSize:1024*1024*3
     }

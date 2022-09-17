@@ -2,14 +2,16 @@ import User from "../models/User.js";
 import historyCard from "../models/historyCard.js";
 
 export const createrecord = async (req,res,next)=>{
-    const newRecord = new historyCard(req.body);
-    try{
-        const savedRecord = newRecord.save();
-        res.status(200).send(newRecord);
+    console.log(req)
+    res.status(200).json({data: req.body, message: 'xyz'})
+    // const newRecord = new historyCard(req.body);
+    // try{
+    //     const savedRecord = newRecord.save();
+    //     res.status(200).send(newRecord);
         
-    }catch(err){
-        next(err);
-    }
+    // }catch(err){
+    //     next(err);
+    // }
 }
 export const updaterecord = async (req,res,next)=>{
     try{
@@ -28,7 +30,9 @@ export const updaterecord = async (req,res,next)=>{
 }
 export const deleterecord = async (req,res,next)=>{
     try{
-        const record = await historyCard.findByIdAndDelete(req.params.id)
+        const record = await historyCard.findByIdAndRemove(req.params.id)
+        // console.log('hi');
+        // console.log(req.query.id)
         res.status(200).json(record);
     }catch(err){
         res.status(500).json(err);
@@ -37,7 +41,7 @@ export const deleterecord = async (req,res,next)=>{
 export const getuserRecords = async (req,res,next)=>{
     try{
         const getRecords = await historyCard.find({patientId:req.params.userid});
-        console.log(getRecords);
+        // console.log(getRecords);
         res.status(200).json(getRecords);
     }catch(err){
         next(err);

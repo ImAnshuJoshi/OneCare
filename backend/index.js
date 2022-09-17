@@ -10,6 +10,10 @@ import usersRoute from './routes/user.js';
 
 import multer from "multer";
 dotenv.config();
+import bodyParser from 'body-parser';
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(cors({
