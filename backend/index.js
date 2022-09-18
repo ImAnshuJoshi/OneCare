@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 const app = express();
 import cors from 'cors';
 import authRoute from './routes/auth.js';
-import historyCard from './routes/historyCard.js';
 import recordRoute from './routes/records.js'
 import usersRoute from './routes/user.js';
 

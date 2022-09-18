@@ -8,8 +8,7 @@ import {
   getuserRecords,
 } from "../controllers/records.js";
 import dotenv from "dotenv";
-import ImageKit from "imagekit";
-import fs from "fs";
+
 import multer from 'multer';
 const Storage = multer.diskStorage({
   destination: (req, file, cb) => {
