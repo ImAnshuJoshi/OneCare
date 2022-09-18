@@ -1,0 +1,20 @@
+.timeline{
+    height:auto;
+    margin-bottom: 40px;
+}
+.btn-historycard{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.btn-timeline{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.btn-timeline:hover{
+    box-shadow: rgba(31, 197, 209, 0.25) 0px 50px 100px -20px, rgba(42, 217, 176, 0.3) 0px 30px 60px -30px;
+}
+/* .history */

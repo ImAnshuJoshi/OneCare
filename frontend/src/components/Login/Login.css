@@ -1,0 +1,62 @@
+/*68B5C8*/
+.image>img{
+    height:600px;
+    margin-top:100px;   
+}
+.login{
+    display: flex;
+    flex-direction: row;
+    /* height:100px; */
+    margin-top: 50px;
+    margin-left: 60px;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-card{
+    width: 400px;
+    height:400px;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: flex-start; */
+  box-shadow: #0e335b 0px 20px 30px -10px;
+  /* border: 1px solid black; */
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.username-icon{
+    width:100px;
+    height:100px
+}
+.login-card>p{
+    font-size: 40px;
+}
+.login-card>p>span{
+    color:#68B5C8;
+}
+.input{
+    border-radius: 10px;
+    padding:10px;
+    margin:10px;
+    border:none;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+button{
+    background-color: white;
+    padding:10px;
+    border-radius:10px;
+    /* border:none; */
+       
+}
+button:hover{
+    background-color:#68B5C8;
+    color:white;
+    cursor: pointer;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; 
+}
+.signup-instead>a{
+    text-decoration: none;
+    color:#00718d;
+}

@@ -1,0 +1,22 @@
+.dashboard{
+    margin-top: 150px;
+    margin-bottom: 30px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border:1px solid black; */
+    height:90vh;
+    width:40vw;
+    text-align: center;
+    margin-left: 30vw;
+    box-shadow: rgba(0, 70, 106, 0.35) 0px 5px 15px;
+}
+.photo>img{
+    width:100px;
+    opacity:0.5
+}
+.upper{
+    display: flex;
+    flex-direction: row;
+    margin:auto 20px;
+}

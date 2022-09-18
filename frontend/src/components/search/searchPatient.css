@@ -1,0 +1,27 @@
+.search-feature{
+    margin-top:100px;
+}
+.input-group{
+    text-align: center;
+    margin-left: 25vw;
+    width:50%;
+}
+.input-group:focus{
+    border-style: none;
+}
+.cards{
+    margin:10px 20px 10px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:25%;
+}
+.card-one{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    margin:20px;
+    position:relative;
+   
+}
+.card-one:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}

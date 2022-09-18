@@ -1,0 +1,21 @@
+.data{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width:30%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding:30px;
+    margin:20px;
+}
+.AddDetails{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    flex-direction: column;
+    margin:30px;
+}
+.pres{
+    padding-top: 30px;
+}
