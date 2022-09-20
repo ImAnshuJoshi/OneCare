@@ -7,12 +7,22 @@ import authRoute from './routes/auth.js';
 import recordRoute from './routes/records.js'
 import usersRoute from './routes/user.js';
 
+//just to store images in the backend
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import multer from "multer";
 dotenv.config();
 import bodyParser from 'body-parser';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(__dirname+'/public'));
+app.use('/uploads',express.static('uploads'));
 
 app.use(express.json());
 app.use(cors({
@@ -30,8 +40,7 @@ const storage = multer.diskStorage({
 })
 
 const upload= multer({storage:storage});
-
-
+console.log(upload);
 const connect = async () =>{
     try {
          mongoose.connect(process.env.MONGO ,{
