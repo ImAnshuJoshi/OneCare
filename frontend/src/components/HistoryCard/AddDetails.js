@@ -33,8 +33,6 @@ function AddDetails() {
   const [desc, setDesc] = useState("");
   const [checkdate, setCheckdate] = useState();
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData();
@@ -46,86 +44,88 @@ function AddDetails() {
     form.append("patientId", patientId);
     form.append("image", selectedImage);
     // console.log(form);
+    // const res= axios.post(`http://localhost:3000/api/record/`,form);
     const res = await fetch(`http://localhost:3000/api/record/`, {
-      method: "POST",
+      method: "POST", 
       body: form,
     });
-    console.log(res)
-    console.log('hi res object')
+    console.log("hi res object");
   };
   return (
     <div className="AddDetails">
       <div className="data">
-        <form className="form" onSubmit={handleSubmit} >
-        <input
-          type="text"
-          className="input"
-          placeholder="DiseaseName"
-          onChange={(e) => {
-            setDiseasename(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          className="input"
-          placeholder="Weight"
-          onChange={(e) => {
-            setWeight(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          className="input"
-          placeholder="Height"
-          onChange={(e) => {
-            setHeight(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          className="input"
-          placeholder="Medicines"
-          onChange={(e) => {
-            setMedicines(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          className="input"
-          placeholder="Description"
-          onChange={(e) => {
-            setDesc(e.target.value);
-          }}
-        />
-        <input
-          type="date"
-          className="input"
-          placeholder="Enter the date of checkup"
-          onChange={(e) => {
-            setCheckdate(e.target.value);
-          }}
-        />
-        <div className="pres">
-          <p>Upload Prescription</p>
-          {selectedImage && (
-            <div>
-              <img
-                alt="not found"
-                width={"250px"}
-                src={URL.createObjectURL(selectedImage)}
-              />
-              <br />
-            </div>
-          )}
-          <br />
+        {/* <Link to={`/history?id=${id}`}> */}
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="input"
+            placeholder="DiseaseName"
+            onChange={(e) => {
+              setDiseasename(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="input"
+            placeholder="Weight"
+            onChange={(e) => {
+              setWeight(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="input"
+            placeholder="Height"
+            onChange={(e) => {
+              setHeight(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="input"
+            placeholder="Medicines"
+            onChange={(e) => {
+              setMedicines(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="input"
+            placeholder="Description"
+            onChange={(e) => {
+              setDesc(e.target.value);
+            }}
+          />
+          <input
+            type="date"
+            className="input"
+            placeholder="Enter the date of checkup"
+            onChange={(e) => {
+              setCheckdate(e.target.value);
+            }}
+          />
+          <div className="pres">
+            <p>Upload Prescription</p>
+            {selectedImage && (
+              <div>
+                <img
+                  alt="not found"
+                  width={"250px"}
+                  src={URL.createObjectURL(selectedImage)}
+                />
+                <br />
+              </div>
+            )}
+            <br />
 
-          <br />
+            <br />
             <input
               type="file"
               name="image"
               onChange={(event) => {
                 setSelectedImage(event.target.files[0]);
               }}
+              encType="multipart/form-data"
             />
             <button
               onClick={(e) => {
@@ -134,15 +134,12 @@ function AddDetails() {
             >
               Remove
             </button>
-        </div>
-        {/* <Link to={`/history?id=${id}`}> */}
-            <button type="submit">
-              Add Record
-            </button>
+          </div>
+
+          <button type="submit">Add Record</button>
+        </form>
         {/* </Link> */}
-          </form>
       </div>
-          
     </div>
   );
 }

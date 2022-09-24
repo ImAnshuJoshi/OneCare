@@ -6,6 +6,7 @@ export const createrecord = async (req,res,next)=>{
     console.log(req.file)
     const newRecord = new historyCard(req.body);
     newRecord.prescription=req.file.path;
+    console.log(newRecord)
     try{
         const savedRecord = await newRecord.save();
         console.log(savedRecord);

@@ -11,6 +11,8 @@ import multer from "multer";
 dotenv.config();
 import bodyParser from 'body-parser';
 
+app.use('/uploads',express.static('uploads'))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,7 +23,7 @@ app.use(cors({
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './img')
+    cb(null, './uploads')
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -67,7 +69,6 @@ app.use((err,req,res,next)=>{
         stack:err.stack
     })
 })
-
 
 app.listen(3000,()=>{
     connect()

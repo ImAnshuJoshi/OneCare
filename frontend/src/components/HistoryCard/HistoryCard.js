@@ -82,12 +82,13 @@ function HistoryCard() {
      <p className="centerit3">
        Description: {p.desc? p.desc:"Not spcified"}
      </p>
+     <p>{p.prescription}</p>
      <a href="">
+      <a href={`http://localhost:3000/${p.prescription}`} target="_blank">
       <button style={{marginTop:'20px'}}> 
-      <a href={p.prescription} target="_blank">
          View prescription 
-      </a>
       </button>
+      </a>
       <button style={{marginTop:'20px',margin:'7px'}} onClick={(e)=> {
         e.preventDefault();
         deleteRecord(p)}
