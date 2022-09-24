@@ -54,3 +54,11 @@ export const login = async (req,res,next)=>{
         next(err);
     }
 }
+export const logout = async (req,res,next)=>{
+    try{
+        
+    }
+    catch(err){
+        next(err);
+    }
+}

@@ -31,7 +31,7 @@ function Profile({username}) {
             }
           </div>
           <div>
-            <Link to="/profile">
+            <Link to={`/history?id=${user._id}`}>
           <button>
             View Full Profile
           </button>
