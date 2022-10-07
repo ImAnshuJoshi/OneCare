@@ -24,6 +24,9 @@ To install all the dependencies
 ```
 npm i
 ```
+
+and make a .env file and copy the contents of .env.example file to your .env file .
+
 #### Now to connect to the frontend
 
 Now for frontend , open new terminal window and write 
