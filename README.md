@@ -24,6 +24,9 @@ To install all the dependencies
 ```
 npm i
 ```
+
+and make a .env file and copy the contents of .env.example file to your .env file .
+
 Make sure you make a folder named as 'uploads' in the backend folder to store all the images locally.
 
 #### Now to connect to the frontend
