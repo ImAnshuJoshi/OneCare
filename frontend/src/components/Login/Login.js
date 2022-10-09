@@ -35,6 +35,7 @@ const [password, setPassword] = useState("")
       });
       // console.log(res.data);
       // console.log("HI1")
+      localStorage.setItem('isuserAdmin',res.data.isAdmin);
       dispatch({type:"LOGIN_SUCCESS",payload:res.data.details});
       // console.log(res);
       // console.log("HI2")

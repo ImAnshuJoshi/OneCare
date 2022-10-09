@@ -47,9 +47,13 @@ function AddDetails() {
     // const res= axios.post(`http://localhost:3000/api/record/`,form);
     const res = await fetch(`http://localhost:3000/api/record/`, {
       method: "POST", 
+      headers:{
+        "Access-Control-Allow-Origin":true,
+      },
       body: form,
     });
     console.log("hi res object");
+    console.log(res)
   };
   return (
     <div className="AddDetails">

@@ -24,6 +24,8 @@ To install all the dependencies
 ```
 npm i
 ```
+Make sure you make a folder named as 'uploads' in the backend folder to store all the images locally.
+
 #### Now to connect to the frontend
 
 Now for frontend , open new terminal window and write 

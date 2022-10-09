@@ -13,6 +13,7 @@ function HistoryCard() {
   const [fileImage, setFileImage]=useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const id = searchParams.get("id")
+  var isAdmin=localStorage.getItem('isuserAdmin');
 
   useEffect(()=>{
     const getuser = async()=>{
@@ -21,6 +22,8 @@ function HistoryCard() {
       return response;
     }
     getuser();
+    isAdmin=localStorage.getItem('isuserAdmin');
+    console.log(isAdmin);
   },[])
 
   useEffect(()=>{
@@ -88,13 +91,18 @@ function HistoryCard() {
          View prescription 
       </button>
       </a>
-      <button style={{marginTop:'20px',margin:'7px'}} onClick={(e)=> {
-        e.preventDefault();
-        deleteRecord(p)}
+      {console.log(isAdmin)}
+      { (isAdmin)==='true'?
+        <button style={{marginTop:'20px',margin:'7px'}} onClick={(e)=> {
+          e.preventDefault();
+          deleteRecord(p)}
         }> 
          Delete this record 
       </button> 
-     </a>
+      :
+      <div></div>
+      }
+      </a>
         </VerticalTimelineElement> 
         
       })
@@ -107,10 +115,16 @@ function HistoryCard() {
           <div>
         <button onClick={() => navigate(-1)} className='back-btn btn-timeline'>Back</button>
           </div>
-      <div>
-        <Link to={`/history/adddetails?id=${id}`}>
+      <div> 
+        {isAdmin==='true'?
+        <div>
+          <Link to={`/history/adddetails?id=${id}`}>
         <button className='add-btn btn-timeline'>Add record</button>
         </Link>
+        </div>
+        :
+        <div></div>
+        }
       </div>
     </div>
       </div>

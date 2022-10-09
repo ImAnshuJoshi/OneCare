@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Profile({username}) {
   const {user} = useContext(AuthContext);
+  let isAdmin=localStorage.getItem('isuserAdmin');
   return (
     <div className="profile"> 
         <div className="heading">
@@ -31,11 +32,19 @@ function Profile({username}) {
             }
           </div>
           <div>
+            {
+              isAdmin==='false'?
             <Link to={`/history?id=${user._id}`}>
           <button>
             View Full Profile
           </button>
-            </Link>
+            </Link>:
+             <Link to={`/admin`}>
+             <button>
+               Search Patients
+             </button>
+               </Link>
+            }
           </div>
           <div>
         

@@ -14,7 +14,8 @@ function PatientsCard({user}) {
   const id = searchParams.get("id")
 
   useEffect(()=>{
-    const getuser = async()=>{
+    const getuser = async(e)=>{
+      e.preventDefault();
       const {data:response}=await axios.get(`http://localhost:3000/api/users/getuser/${id}`)
       // console.log(response);
       setPatient(response);
@@ -26,8 +27,7 @@ function PatientsCard({user}) {
   return (
     <div className="cards col" style={{textDecoration:'none'}}>
        <Card className="card-one col-lg-3" style={{ width: '18rem',border:'none',textDecoration:'none'}}>
-      <Card.Img variant="top" src={user.profilePicture}/>
-      <Card.Body>
+      <Card.Body >
         <Card.Title>{user.username}</Card.Title>
         <Card.Text>
           {user.desc ? user.desc:"Hey there ! I am new to OneCare"}
