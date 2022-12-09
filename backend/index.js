@@ -57,6 +57,9 @@ mongoose.connection.on("disconnected",()=>{
 app.use('/api/auth',authRoute);
 app.use('/api/record',recordRoute);
 app.use('/api/users',usersRoute);
+app.get('/',(req,res)=>{
+    res.send('Hello World');
+})
 
 app.use((err,req,res,next)=>{
     const errorStatus = err.status || 400;
