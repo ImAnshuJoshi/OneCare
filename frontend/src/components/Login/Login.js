@@ -5,13 +5,16 @@ import login from '../../assets/login.png'
 import PasswordIcon from '@mui/icons-material/Password';
 import { AuthContext } from '../../context/authContext';
 import {Link, useNavigate} from 'react-router-dom';
+import swal from "sweetalert2";
+import ReactLoading from 'react-loading';
 
 function Login() {
 
-//   const [credentials,setCredentials] = useState({
-//     username:undefined,
-//     password:undefined
-// })
+  // function to validate password
+  const validatePassword = (str) => {
+    var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
+    return re.test(str);  
+  };
 const [username, setUsername] = useState("")
 const [password, setPassword] = useState("")
 
@@ -19,36 +22,50 @@ const [password, setPassword] = useState("")
 
   const navigate = useNavigate();
 
-  // const handleChange = (e) =>{
-  //   setCredentials((prev)=>({
-  //     [e.target.id]:e.target.value
-  //   }))
-  // }
 
   const handleClick = async (e)=>{
     e.preventDefault();
     dispatch({type:"LOGIN_START"});
     window.localStorage.removeItem('user');
-    try{
-      const res = await axios.post("http://localhost:3000/api/auth/login",{
-        username, password
+    if(!validatePassword(password)){
+      swal.fire({
+        icon: "error",
+        title: "Invalid Password...",
+        text: "Password should be longer than 4 characters and must contain atleast 1 Uppercase,1 Lowercase, 1 Number and 1 special character",
       });
-      // console.log(res.data);
-      // console.log("HI1")
-      localStorage.setItem('isuserAdmin',res.data.isAdmin);
-      dispatch({type:"LOGIN_SUCCESS",payload:res.data.details});
-      // console.log(res);
-      // console.log("HI2")
-      navigate('/homepage')
     }
-    catch(err){
-      dispatch({type:"LOGIN_ERROR",payload:err});
-      // console.log("HI err");
+    else{
+
+      try{
+        const res = await axios.post("http://localhost:3000/api/auth/login",{
+          username, password
+        });
+        localStorage.setItem('isuserAdmin',res.data.isAdmin);
+        dispatch({type:"LOGIN_SUCCESS",payload:res.data.details});
+        navigate('/homepage')
+        swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Welcome',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      catch(err){
+        swal.fire({
+          icon: "error",
+          title: "No User Found",
+          text: "Please Enter valid credentials!",
+        });
+        dispatch({type:"LOGIN_ERROR",payload:err});
+        // console.log("HI err");
+      }
     }
   }
 
   return (
     <div>
+      <ReactLoading type="String" color="Black" />
       <div className="login">
         <div className="image">
       <img src={login} alt="" />

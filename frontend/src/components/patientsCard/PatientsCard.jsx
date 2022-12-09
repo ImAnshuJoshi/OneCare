@@ -39,7 +39,7 @@ function PatientsCard({user}) {
         <ListGroup.Item><b>Weight</b>:{user.weight? user.weight : "Not specified"}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Link to={`/history?id=${patient.id}`} >
+        <Link to={`/history?id=${user._id}`} >
       <Button variant="primary">Go to History</Button>
         </Link>
       </Card.Body>

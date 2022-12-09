@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      
     },
     country: {
       type: String,
@@ -38,6 +39,7 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,  
+      
     },
     isAdmin: {
       type: Boolean,

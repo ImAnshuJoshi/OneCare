@@ -12,7 +12,7 @@ function Navbar() {
         <ul className='patient__list'>
           <li className='patient__li'>HOME</li>
           <li className='patient__li'>ABOUT US</li>
-          <li className='patient__li'>CONTACT US</li>
+          <li className='patient__li'>LOG OUT</li>
         </ul>
         <div>
           Welcome&nbsp;

@@ -24,10 +24,6 @@ function SearchPatient() {
     }
     fetchPatients();
   },[])
-
-  // const handleClick=(e)=>{
-
-  // }
   return (
     <div>
       <NavbarComponent/>
