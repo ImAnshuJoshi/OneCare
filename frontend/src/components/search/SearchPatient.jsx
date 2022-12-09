@@ -18,7 +18,7 @@ function SearchPatient() {
 
   useEffect(()=>{
     const fetchPatients = async ()=>{
-      const res = await axios.get('http://localhost:3000/api/users/getusers/');
+      const res = await axios.get('https://onecare-backend1.onrender.com/api/users/getusers/');
       setPatients(res.data);
       // console.log(patients);
     }

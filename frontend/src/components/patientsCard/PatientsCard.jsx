@@ -16,7 +16,7 @@ function PatientsCard({user}) {
   useEffect(()=>{
     const getuser = async(e)=>{
       e.preventDefault();
-      const {data:response}=await axios.get(`http://localhost:3000/api/users/getuser/${id}`)
+      const {data:response}=await axios.get(`https://onecare-backend1.onrender.com/api/users/getuser/${id}`)
       // console.log(response);
       setPatient(response);
       return response;

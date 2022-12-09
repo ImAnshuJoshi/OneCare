@@ -16,7 +16,7 @@ function AddDetails() {
   useEffect(() => {
     const getuser = async () => {
       const { data: response } = await axios.get(
-        `http://localhost:3000/api/users/getuser/${id}`
+        `https://onecare-backend1.onrender.com/api/users/getuser/${id}`
       );
       // console.log(response);
       setPatient(response);
@@ -44,8 +44,8 @@ function AddDetails() {
     form.append("patientId", patientId);
     form.append("image", selectedImage);
     // console.log(form);
-    // const res= axios.post(`http://localhost:3000/api/record/`,form);
-    const res = await fetch(`http://localhost:3000/api/record/`, {
+    // const res= axios.post(`https://onecare-backend1.onrender.com/api/record/`,form);
+    const res = await fetch(`https://onecare-backend1.onrender.com/api/record/`, {
       method: "POST", 
       headers:{
         "Access-Control-Allow-Origin":true,
