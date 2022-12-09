@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRoute from './routes/auth.js';
 import recordRoute from './routes/records.js'
 import usersRoute from './routes/user.js';
+import User from './models/User.js';
 
 import multer from "multer";
 dotenv.config();
@@ -57,6 +58,11 @@ mongoose.connection.on("disconnected",()=>{
 app.use('/api/auth',authRoute);
 app.use('/api/record',recordRoute);
 app.use('/api/users',usersRoute);
+app.get('/allusers',async (req,res)=>{
+  const users = await User.find();
+// res.status(200).json(users);
+res.send(users)
+})
 app.get('/',(req,res)=>{
     res.send('Hello World');
 })
