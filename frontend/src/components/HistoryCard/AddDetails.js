@@ -35,8 +35,7 @@ function AddDetails() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-
+    try {
       const form = new FormData();
       form.append("diseasename", diseasename);
       form.append("weight", weight);
@@ -48,22 +47,24 @@ function AddDetails() {
       // console.log(form);
       // const res= axios.post(`https://onecare-backend1.onrender.com/api/record/`,form);
       // const res = await fetch(`https://onecare-backend1.onrender.com/api/record/`, {
-        const res = await fetch(`http://localhost:3000/api/record/`, {
-          method: "POST", 
-          headers:{
-            "Access-Control-Allow-Origin":true,
+      const res = await fetch(
+        `https://onecare-backend1.onrender.com/api/record/`,
+        {
+          method: "POST",
+          headers: {
+            "Access-Control-Allow-Origin": true,
           },
           body: form,
-        });
-        console.log("hi res object");
-        console.log(res)
-        alert("Record added");
-        window.location=`/history?id=${id}`
-      }
-      catch(err){
-        console.log(err);
-        alert(err.message);
-      }
+        }
+      );
+      console.log("hi res object");
+      console.log(res);
+      alert("Record added");
+      window.location = `/history?id=${id}`;
+    } catch (err) {
+      console.log(err);
+      alert(err.message);
+    }
   };
   return (
     <div className="AddDetails">
