@@ -29,7 +29,7 @@ export const updaterecord = async (req,res,next)=>{
         
     }catch(err){
         res.status(500).json(err);
-    }
+    } 
 }
 export const deleterecord = async (req,res,next)=>{
     try{

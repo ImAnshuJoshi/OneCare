@@ -1,4 +1,5 @@
 import React, {useEffect, useState } from 'react'
+import "./patientCard.css"
 import '../search/searchPatient.css'
 import Button from 'react-bootstrap/Button';
 import Card from "react-bootstrap/Card";
@@ -25,7 +26,7 @@ function PatientsCard({user}) {
   },[])
   // console.log(patient.username); 
   return (
-    <div className="cards col" style={{textDecoration:'none'}}>
+    <div className="" style={{textDecoration:'none'}}>
        <Card className="card-one col-lg-3" style={{ width: '18rem',border:'none',textDecoration:'none'}}>
       <Card.Body >
         <Card.Title>{user.username}</Card.Title>
@@ -34,8 +35,8 @@ function PatientsCard({user}) {
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item><b>Age</b>:{user.age? user.age : "Not specified"}</ListGroup.Item>
-        <ListGroup.Item><b>Gender</b>:{user.gender? user.gender : "Not specified"}</ListGroup.Item>
+        <ListGroup.Item style={{border:"none"}}><b>E-mail</b>:{user.email? user.email : "Not specified"}</ListGroup.Item>
+        <ListGroup.Item><b>Phone:</b>:{user.phone? user.phone : "Not specified"}</ListGroup.Item>
         <ListGroup.Item><b>Weight</b>:{user.weight? user.weight : "Not specified"}</ListGroup.Item>
       </ListGroup>
       <Card.Body>

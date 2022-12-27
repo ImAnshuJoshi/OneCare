@@ -33,13 +33,20 @@ function SearchPatient() {
           placeholder="Search By username"
         />
       </InputGroup>
+      <div className='search-cards'>
       {
         patients.filter((patient)=>
           patient.username.toLowerCase().includes(query)
         ).map((patient,idx)=>{
-          return <Link to={`/homepage/${patient.username}`}><PatientsCard key={idx} user={patient}/></Link>
-        })
-      }
+          return (
+            
+            // <Link to={`/homepage/${patient.username}`}>
+            <PatientsCard key={idx} user={patient}/>
+            // </Link>
+              )
+            })
+          }
+          </div>
       </div>
       </div>
   )

@@ -20,9 +20,19 @@ export const register = async (req,res,next)=>{
             password:hash,
             isAdmin:req.body.isAdmin,
         })
-
         await newUser.save();
+        if(newUser){
+            const token= jwt.sign({id:newUser._id,isAdmin:newUser.isAdmin},process.env.JWT);
+            res.cookie("token",token);
+            
+        }
         res.status(200).send(newUser);
+        res.status(200).json({
+            user: newUser,
+            message: 'User has been signed in!',
+            token: token,
+          })
+        // else
     }
     catch(err){
         next(err);
@@ -44,11 +54,13 @@ export const login = async (req,res,next)=>{
         const token= jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT)
         const {password,isAdmin,...otherDetails}= user._doc;
 
-        res.cookie(
-            "access_token",
-            token,{
-                httpOnly:true,
-            }).status(200).json({ details:{...otherDetails},isAdmin});
+        // res.cookie(
+        //     "access_token",
+        //     token,{
+        //         httpOnly:true,
+        //     }).status(200).json({ details:{...otherDetails},isAdmin});
+        
+        res.cookie("token",token);
 
     }catch(err){
         next(err);
@@ -56,7 +68,7 @@ export const login = async (req,res,next)=>{
 }
 export const logout = async (req,res,next)=>{
     try{
-        
+        localStorage.removeItem("user");
     }
     catch(err){
         next(err);
